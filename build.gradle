@@ -28,11 +28,9 @@ dependencies {
 	compile "com.commercetools.sdk.jvm.core:commercetools-models:$jvmSdkVersion"
 	compile "com.commercetools.sdk.jvm.core:commercetools-java-client:$jvmSdkVersion"
 	compile "com.commercetools.sdk.jvm.core:commercetools-convenience:$jvmSdkVersion"
-	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.retry:spring-retry')
 	runtime('org.springframework.boot:spring-boot-devtools')
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	testCompile('org.springframework.security:spring-security-test')
 }
