@@ -1,7 +1,5 @@
 package com.commercetools.sunrise.extensions;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import io.sphere.sdk.client.BlockingSphereClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +9,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HelloWorldController {
+
     @Autowired
-    BlockingSphereClient sphereClient;
+    private BlockingSphereClient sphereClient;
 
     @GetMapping(value = "/hello")
     @ResponseBody
