@@ -24,6 +24,7 @@ public class CommercetoolsConfig {
     ) throws IOException {
         final SphereClientConfig config = SphereClientConfig.of(projectKey, clientId, clientSecret, authUrl, apiUrl);
         final SphereClient asyncClient = SphereClientFactory.of().createClient(config);
+        System.err.println("### creating client for project " + projectKey);//TODO introduce logback
         return BlockingSphereClient.of(asyncClient, 20, TimeUnit.SECONDS);
     }
 }
