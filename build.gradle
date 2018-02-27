@@ -24,6 +24,10 @@ repositories {
 
 
 dependencies {
+	def jvmSdkVersion = "1.29.1"
+	compile "com.commercetools.sdk.jvm.core:commercetools-models:$jvmSdkVersion"
+	compile "com.commercetools.sdk.jvm.core:commercetools-java-client:$jvmSdkVersion"
+	compile "com.commercetools.sdk.jvm.core:commercetools-convenience:$jvmSdkVersion"
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.retry:spring-retry')
