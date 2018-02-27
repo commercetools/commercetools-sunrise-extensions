@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
+import static com.commercetools.sunrise.extensions.ExtensionHeaders.AUTH;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -33,9 +34,10 @@ public class ExampleIntegrationTest {
 
     @Test
     public void greetingShouldReturnMessageFromService() throws Exception {
-        final MockHttpServletRequestBuilder post = post("/carts");
-        post.contentType(MediaType.APPLICATION_JSON);
-        post.content("{}");
+        final MockHttpServletRequestBuilder post = post("/carts")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{}")
+                .header(AUTH, "secret");
         this.mockMvc.perform(post).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("{\"actions\":[]}")));
     }

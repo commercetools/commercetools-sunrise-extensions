@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
 
+import static com.commercetools.sunrise.extensions.ExtensionHeaders.AUTH;
+
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${authenticationKey}")
@@ -25,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.csrf().disable().httpBasic().disable()
                 .addFilterBefore(new AuthenticationFilter(expectedKey), BasicAuthenticationFilter.class)
                 .authorizeRequests().anyRequest().authenticated();
     }
@@ -61,7 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         protected void doFilterInternal(HttpServletRequest request,
                                         HttpServletResponse response, FilterChain filterChain)
                 throws ServletException, IOException {
-            final String key = request.getHeader("x-functions-key");
+            final String key = request.getHeader(AUTH);
             if(expectedKey.equals(key)){
                 Authentication auth = new FunctionAuthenticationToken(key);
                 SecurityContextHolder.getContext().setAuthentication(auth);
