@@ -1,6 +1,9 @@
 package com.commercetools.sunrise.extensions;
 
+import io.sphere.sdk.carts.Cart;
+import io.sphere.sdk.carts.commands.updateactions.SetCustomerEmail;
 import io.sphere.sdk.client.BlockingSphereClient;
+import io.sphere.sdk.commands.UpdateAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -14,9 +17,10 @@ public class HelloWorldController {
     @Autowired
     private BlockingSphereClient sphereClient;
 
-    @PostMapping(value = "/hello", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/carts", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String greeting(@RequestBody ExtensionRequest request) {
-        return "Hello " + request.getAction();
+    public ExtensionResponse<Cart> carts(@RequestBody ExtensionRequest<Cart> request) {
+        final UpdateAction<Cart> action = SetCustomerEmail.of("email@email.de");
+        return new UpdatesExtensionResponse<>(action);
     }
 }
