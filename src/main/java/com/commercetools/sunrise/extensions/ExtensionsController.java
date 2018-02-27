@@ -27,7 +27,7 @@ public class ExtensionsController {
     @ResponseBody
     public CompletionStage<ExtensionResponse<Cart>> carts(@RequestBody ExtensionRequest<Cart> request) {
         log.info("Starting cart extension");
-        final Cart cart = extractCart(request);
+        final Cart cart = request.getResourceObj();
         final boolean needsCustomerEmail = cart.getCustomerEmail() == null && cart.getCustomerId() != null;
         if (needsCustomerEmail) {
             log.info("Setting customer email to cart...");
@@ -42,13 +42,5 @@ public class ExtensionsController {
                 .thenApply(customer -> new UpdatesExtensionResponse<>(SetCustomerEmail.of(customer.getEmail())));
         response.thenAccept(customer -> log.info("Customer email set successfully"));
         return response;
-    }
-
-    private Cart extractCart(final ExtensionRequest<Cart> request) {
-        if (request.getResource() != null && request.getResource().getObj() != null) {
-            return request.getResource().getObj();
-        } else {
-            throw new IllegalArgumentException("Wrong expected input from CTP");
-        }
     }
 }
