@@ -28,13 +28,16 @@ public class ExtensionsController {
     public CompletionStage<ExtensionResponse<Cart>> carts(@RequestBody ExtensionRequest<Cart> request) {
         log.info("Starting cart extension");
         final Cart cart = request.getResourceObj();
-        final boolean needsCustomerEmail = cart.getCustomerEmail() == null && cart.getCustomerId() != null;
-        if (needsCustomerEmail) {
+        if (needsCustomerEmail(cart)) {
             log.info("Setting customer email to cart...");
             return setCustomerEmail(cart.getCustomerId());
         }
         log.info("Nothing to do");
         return completedFuture(new NoOpExtensionResponse<>());
+    }
+
+    private boolean needsCustomerEmail(Cart cart) {
+        return cart.getCustomerEmail() == null && cart.getCustomerId() != null;
     }
 
     private CompletionStage<ExtensionResponse<Cart>> setCustomerEmail(final String customerId) {
