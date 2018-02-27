@@ -4,6 +4,7 @@ import io.sphere.sdk.client.BlockingSphereClient;
 import io.sphere.sdk.client.SphereClient;
 import io.sphere.sdk.client.SphereClientConfig;
 import io.sphere.sdk.client.SphereClientFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
+@Slf4j
 public class CommercetoolsConfig {
 
     @Bean(destroyMethod = "close")
@@ -24,7 +26,7 @@ public class CommercetoolsConfig {
     ) throws IOException {
         final SphereClientConfig config = SphereClientConfig.of(projectKey, clientId, clientSecret, authUrl, apiUrl);
         final SphereClient asyncClient = SphereClientFactory.of().createClient(config);
-        System.err.println("### creating client for project " + projectKey);//TODO introduce logback
+        log.info("Creating CTP client for project {}.", projectKey);
         return BlockingSphereClient.of(asyncClient, 20, TimeUnit.SECONDS);
     }
 }
