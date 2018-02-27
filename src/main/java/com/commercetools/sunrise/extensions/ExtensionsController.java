@@ -38,11 +38,10 @@ public class ExtensionsController {
     }
 
     private CompletionStage<ExtensionResponse<Cart>> setCustomerEmail(final String customerId) {
-//        final CompletionStage<ExtensionResponse<Cart>> response = sphereClient.execute(CustomerByIdGet.of(customerId))
-//                .thenApply(customer -> new UpdatesExtensionResponse<>(SetCustomerEmail.of(customer.getEmail())));
-//        response.thenAccept(customer -> log.info("Customer email set successfully"));
-//        return response;
-        return completedFuture(new NoOpExtensionResponse<>());
+        final CompletionStage<ExtensionResponse<Cart>> response = sphereClient.execute(CustomerByIdGet.of(customerId))
+                .thenApply(customer -> new UpdatesExtensionResponse<>(SetCustomerEmail.of(customer.getEmail())));
+        response.thenAccept(customer -> log.info("Customer email set successfully"));
+        return response;
     }
 
     private Cart extractCart(final ExtensionRequest<Cart> request) {
