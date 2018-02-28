@@ -22,6 +22,11 @@ repositories {
 	mavenCentral()
 }
 
+test {
+    testLogging {
+        exceptionFormat = 'full'
+    }
+}
 
 dependencies {
 	def jvmSdkVersion = "1.29.1"
