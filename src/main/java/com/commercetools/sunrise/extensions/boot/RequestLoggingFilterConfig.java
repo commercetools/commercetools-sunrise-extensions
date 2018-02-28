@@ -1,4 +1,4 @@
-package com.commercetools.sunrise.extensions;
+package com.commercetools.sunrise.extensions.boot;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

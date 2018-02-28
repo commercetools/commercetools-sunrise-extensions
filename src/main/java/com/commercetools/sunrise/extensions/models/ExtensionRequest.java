@@ -13,7 +13,7 @@ public class ExtensionRequest<T extends Resource<T>> {
         if (getResource() != null && getResource().getObj() != null) {
             return getResource().getObj();
         } else {
-            throw new IllegalArgumentException("Wrong expected input from CTP");
+            throw new IllegalArgumentException("Field 'obj' is not expanded.");
         }
     }
 }

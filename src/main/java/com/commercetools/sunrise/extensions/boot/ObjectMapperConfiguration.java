@@ -1,4 +1,4 @@
-package com.commercetools.sunrise.extensions;
+package com.commercetools.sunrise.extensions.boot;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.sphere.sdk.json.SphereJsonUtils;

@@ -1,37 +1,28 @@
 package com.commercetools.sunrise.extensions;
 
-import com.commercetools.sunrise.extensions.models.ExtensionRequest;
-import com.commercetools.sunrise.extensions.models.ExtensionResponse;
-import com.commercetools.sunrise.extensions.models.NoOpExtensionResponse;
-import com.commercetools.sunrise.extensions.models.UpdatesExtensionResponse;
+import com.commercetools.sunrise.extensions.models.*;
 import io.sphere.sdk.carts.Cart;
 import io.sphere.sdk.carts.commands.updateactions.SetCustomerEmail;
-import io.sphere.sdk.client.BlockingSphereClient;
+import io.sphere.sdk.client.SphereClient;
 import io.sphere.sdk.customers.queries.CustomerByIdGet;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.concurrent.CompletionStage;
 
 import static java.util.concurrent.CompletableFuture.completedFuture;
 
-@Controller
 @Slf4j
-public class ExtensionsController {
+public class SetCustomerEmailCartExtension implements Extension<Cart> {
 
-    @Autowired
-    private BlockingSphereClient sphereClient;
+    private final SphereClient sphereClient;
 
-    @PostMapping(value = "/carts/set-customer-email",
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public CompletionStage<ExtensionResponse<Cart>> carts(@RequestBody ExtensionRequest<Cart> request) {
+    public SetCustomerEmailCartExtension(SphereClient sphereClient) {
+        this.sphereClient = sphereClient;
+    }
+
+    @Override
+    public CompletionStage<ExtensionResponse<Cart>> apply(@RequestBody ExtensionRequest<Cart> request) {
         log.info("Starting cart extension");
         final Cart cart = request.getResourceObj();
         if (needsCustomerEmail(cart)) {

@@ -1,4 +1,4 @@
-package com.commercetools.sunrise.extensions;
+package com.commercetools.sunrise.extensions.boot;
 
 
 import org.springframework.beans.factory.annotation.Value;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
 
-import static com.commercetools.sunrise.extensions.ExtensionHeaders.AUTH;
+import static com.commercetools.sunrise.extensions.models.ExtensionHeaders.AUTH;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {

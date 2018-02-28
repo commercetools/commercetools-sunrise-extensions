@@ -1,5 +1,7 @@
 package com.commercetools.sunrise.extensions;
 
+import com.commercetools.sunrise.extensions.boot.DefaultWiring;
+import com.commercetools.sunrise.extensions.boot.ExtensionsController;
 import io.sphere.sdk.client.BlockingSphereClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
-import static com.commercetools.sunrise.extensions.ExtensionHeaders.AUTH;
+import static com.commercetools.sunrise.extensions.models.ExtensionHeaders.AUTH;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;

@@ -1,4 +1,4 @@
-package com.commercetools.sunrise.extensions;
+package com.commercetools.sunrise.extensions.boot;
 
 import io.sphere.sdk.client.BlockingSphereClient;
 import io.sphere.sdk.client.SphereClient;

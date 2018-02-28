@@ -22,4 +22,9 @@ public class UpdatesExtensionResponse<T> implements ExtensionResponse<Cart> {
         actions.addAll(asList(furtherActions));
         this.actions = Collections.unmodifiableList(actions);
     }
+
+    @Override
+    public boolean successful() {
+        return true;
+    }
 }

@@ -1,5 +1,7 @@
 package com.commercetools.sunrise.extensions;
 
+import com.commercetools.sunrise.extensions.boot.DefaultWiring;
+import com.commercetools.sunrise.extensions.boot.ExtensionsController;
 import org.apache.commons.io.IOUtils;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultActions;
 
-import static com.commercetools.sunrise.extensions.ExtensionHeaders.AUTH;
+import static com.commercetools.sunrise.extensions.models.ExtensionHeaders.AUTH;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.asyncDispatch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;

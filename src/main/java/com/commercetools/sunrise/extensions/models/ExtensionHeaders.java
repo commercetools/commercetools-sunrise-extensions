@@ -1,4 +1,4 @@
-package com.commercetools.sunrise.extensions;
+package com.commercetools.sunrise.extensions.models;
 
 import lombok.experimental.UtilityClass;
 
