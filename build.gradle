@@ -33,7 +33,10 @@ dependencies {
 	compile "com.commercetools.sdk.jvm.core:commercetools-models:$jvmSdkVersion"
 	compile "com.commercetools.sdk.jvm.core:commercetools-java-client:$jvmSdkVersion"
 	compile "com.commercetools.sdk.jvm.core:commercetools-convenience:$jvmSdkVersion"
-	compile('org.springframework.boot:spring-boot-starter-security')
+    compile 'com.amazonaws:aws-lambda-java-core:1.2.0'
+    compile('com.amazonaws.serverless:aws-serverless-java-container:1.0')
+    compile('com.amazonaws.serverless:aws-serverless-java-container-spring:0.8')
+    compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.retry:spring-retry')
 	runtime('org.springframework.boot:spring-boot-devtools')
