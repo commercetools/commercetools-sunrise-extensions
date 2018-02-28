@@ -22,12 +22,14 @@ import static java.util.concurrent.CompletableFuture.completedFuture;
 
 @Controller
 @Slf4j
-public class ExtensionsController {
+public class SetCustomerEmailExtensionsController {
+
+    public static final String ENDPOINT = "/carts/set-customer-email";
 
     @Autowired
     private BlockingSphereClient sphereClient;
 
-    @PostMapping(value = "/carts/set-customer-email",
+    @PostMapping(value = ENDPOINT,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody

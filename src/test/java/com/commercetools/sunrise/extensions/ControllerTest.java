@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(ExtensionsController.class)
+@WebMvcTest(SetCustomerEmailExtensionsController.class)
 @ActiveProfiles({"test"})
 @ContextConfiguration(classes = DefaultWiring.class)
 public abstract class ControllerTest {
