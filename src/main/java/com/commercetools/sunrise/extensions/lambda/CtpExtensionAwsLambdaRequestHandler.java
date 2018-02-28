@@ -33,7 +33,7 @@ public class CtpExtensionAwsLambdaRequestHandler<T extends Resource<T>> implemen
         return transform(result);
     }
 
-    private <T extends Resource<T>> AwsProxyResponse transform(final ExtensionResponse<T> result) {
+    private AwsProxyResponse transform(final ExtensionResponse<T> result) {
         final int statusCode = result.successful() ? 200 : 400;
         final String body = SphereJsonUtils.toJsonString(result);
         return new AwsProxyResponse(statusCode, Collections.emptyMap(), body);

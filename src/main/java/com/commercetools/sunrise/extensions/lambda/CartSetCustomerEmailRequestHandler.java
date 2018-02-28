@@ -9,6 +9,7 @@ import io.sphere.sdk.client.SphereClient;
 import io.sphere.sdk.client.SphereClientConfig;
 import io.sphere.sdk.client.SphereClientFactory;
 
+@SuppressWarnings("unused")// used with AWS lambda, set Handler: com.commercetools.sunrise.extensions.lambda.CartSetCustomerEmailRequestHandler::handleRequest
 public class CartSetCustomerEmailRequestHandler extends CtpExtensionAwsLambdaRequestHandler<Cart> {
 
     private static final TypeReference<ExtensionRequest<Cart>> TYPE_REFERENCE = new TypeReference<ExtensionRequest<Cart>>() {
