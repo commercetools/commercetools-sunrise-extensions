@@ -49,3 +49,5 @@ dependencies {
 	testCompile('org.assertj:assertj-core:3.9.0')
 	testCompile('org.springframework.security:spring-security-test')
 }
+
+mainClassName = 'com.commercetools.sunrise.extensions.boot.SunriseExtensionsApplication'
