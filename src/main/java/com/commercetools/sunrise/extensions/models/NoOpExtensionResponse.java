@@ -10,4 +10,9 @@ import java.util.List;
 @Data
 public class NoOpExtensionResponse<T extends Resource<T>> implements ExtensionResponse<T> {
     private final List<UpdateAction<T>> actions = Collections.emptyList();
+
+    @Override
+    public boolean successful() {
+        return true;
+    }
 }

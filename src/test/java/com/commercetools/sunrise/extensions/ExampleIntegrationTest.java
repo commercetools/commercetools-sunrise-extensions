@@ -1,5 +1,7 @@
 package com.commercetools.sunrise.extensions;
 
+import com.commercetools.sunrise.extensions.boot.DefaultWiring;
+import com.commercetools.sunrise.extensions.boot.ExtensionsController;
 import io.sphere.sdk.carts.Cart;
 import io.sphere.sdk.carts.CartDraft;
 import io.sphere.sdk.carts.CartDraftBuilder;
@@ -121,7 +123,7 @@ public class ExampleIntegrationTest {
 
     private ExtensionDraft extensionDraft() {
         final TunnelResource tunnelResource = ws.getForObject(NGROK_API, TunnelResource.class);
-        final String url = tunnelResource.getPublic_url() + SetCustomerEmailExtensionsController.ENDPOINT;
+        final String url = tunnelResource.getPublic_url() + ExtensionsController.ENDPOINT;
         final AzureFunctionsAuthentication authentication = AzureFunctionsAuthenticationBuilder.of(authenticationKey).build();
         final HttpDestination destination = HttpDestinationBuilder.of(url, authentication).build();
         final Trigger trigger = TriggerBuilder.of(Cart.referenceTypeId(), singletonList(TriggerType.CREATE)).build();

@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import static com.commercetools.sunrise.extensions.SetCustomerEmailExtensionsController.ENDPOINT;
+import static com.commercetools.sunrise.extensions.boot.ExtensionsController.ENDPOINT;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Matchers.any;

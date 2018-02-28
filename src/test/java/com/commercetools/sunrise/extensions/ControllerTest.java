@@ -1,5 +1,6 @@
 package com.commercetools.sunrise.extensions;
 
+import com.commercetools.sunrise.extensions.boot.DefaultWiring;
 import org.apache.commons.io.IOUtils;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +15,14 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultActions;
 
-import static com.commercetools.sunrise.extensions.ExtensionHeaders.AUTH;
+import static com.commercetools.sunrise.extensions.models.ExtensionHeaders.AUTH;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.asyncDispatch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(SetCustomerEmailExtensionsController.class)
+@WebMvcTest(SetCustomerEmailCartExtension.class)
 @ActiveProfiles({"test"})
 @ContextConfiguration(classes = DefaultWiring.class)
 public abstract class ControllerTest {
