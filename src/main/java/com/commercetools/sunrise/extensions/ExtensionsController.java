@@ -1,5 +1,9 @@
 package com.commercetools.sunrise.extensions;
 
+import com.commercetools.sunrise.extensions.models.ExtensionRequest;
+import com.commercetools.sunrise.extensions.models.ExtensionResponse;
+import com.commercetools.sunrise.extensions.models.NoOpExtensionResponse;
+import com.commercetools.sunrise.extensions.models.UpdatesExtensionResponse;
 import io.sphere.sdk.carts.Cart;
 import io.sphere.sdk.carts.commands.updateactions.SetCustomerEmail;
 import io.sphere.sdk.client.BlockingSphereClient;
@@ -23,7 +27,7 @@ public class ExtensionsController {
     @Autowired
     private BlockingSphereClient sphereClient;
 
-    @PostMapping(value = "/carts", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/carts/set-customer-email", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public CompletionStage<ExtensionResponse<Cart>> carts(@RequestBody ExtensionRequest<Cart> request) {
         log.info("Starting cart extension");

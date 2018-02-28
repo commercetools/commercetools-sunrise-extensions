@@ -34,7 +34,7 @@ public class ExampleIntegrationTest {
 
     @Test
     public void greetingShouldReturnMessageFromService() throws Exception {
-        final MockHttpServletRequestBuilder post = post("/carts")
+        final MockHttpServletRequestBuilder post = post("/carts/set-customer-email")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{}")
                 .header(AUTH, "secret");

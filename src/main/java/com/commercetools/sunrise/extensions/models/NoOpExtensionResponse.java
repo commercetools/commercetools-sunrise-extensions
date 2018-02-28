@@ -1,4 +1,4 @@
-package com.commercetools.sunrise.extensions;
+package com.commercetools.sunrise.extensions.models;
 
 import io.sphere.sdk.commands.UpdateAction;
 import io.sphere.sdk.models.Resource;

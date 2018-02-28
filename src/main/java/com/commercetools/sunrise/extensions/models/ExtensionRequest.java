@@ -1,9 +1,8 @@
-package com.commercetools.sunrise.extensions;
+package com.commercetools.sunrise.extensions.models;
 
 import io.sphere.sdk.models.Reference;
 import io.sphere.sdk.models.Resource;
 import lombok.Data;
-
 
 @Data
 public class ExtensionRequest<T extends Resource<T>> {

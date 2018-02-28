@@ -1,8 +1,7 @@
-package com.commercetools.sunrise.extensions;
+package com.commercetools.sunrise.extensions.models;
 
 import io.sphere.sdk.carts.Cart;
 import io.sphere.sdk.commands.UpdateAction;
-import io.sphere.sdk.utils.SphereInternalUtils;
 import lombok.Data;
 import lombok.NonNull;
 

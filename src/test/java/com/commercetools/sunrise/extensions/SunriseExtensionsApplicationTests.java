@@ -36,7 +36,7 @@ public class SunriseExtensionsApplicationTests {
     @Test
     public void greetingShouldReturnMessageFromService() throws Exception {
         final RequestBuilder request =
-                post("/carts")
+                post("/carts/set-customer-email")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{}")
                         .header(AUTH, "secret");
