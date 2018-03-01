@@ -33,4 +33,16 @@ Setting for AWS Lambda:
 * Runtime: Java 8
 * Handler: com.commercetools.sunrise.extensions.lambda.CartSetCustomerEmailRequestHandler::handleRequest`
 
+Environment Variables to set:
+
+```
+SPRING_PROFILES_ACTIVE=production
+AUTHENTICATION_KEY=your-authentication-key if azure security is used
+CTP_PROJECT_KEY=
+CTP_CLIENT_ID=
+CTP_CLIENT_SECRET=
+CTP_AUTH_URL=
+CTP_API_URL=
+```
+
 ### Heroku
