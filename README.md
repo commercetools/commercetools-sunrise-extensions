@@ -15,3 +15,22 @@ Endpoint: POST /carts/set-customer-email
 ## Developer Hints
 
 When working with IntelliJ IDEA you need to enable Annotation Processing in the Preferences.
+
+## Deployment
+
+### AWS Lambda
+
+To upload the code ("Function package") to Lambda create a "fat" jar containing all code with library dependencies
+
+```
+./gradlew shadowJar to create fat jar
+```
+
+You can find the artifact at `build/libs/sunrise-extensions-0.0.1-SNAPSHOT-all.jar `.
+
+Setting for AWS Lambda:
+
+* Runtime: Java 8
+* Handler: com.commercetools.sunrise.extensions.lambda.CartSetCustomerEmailRequestHandler::handleRequest`
+
+### Heroku
