@@ -15,6 +15,7 @@ Endpoint: POST /carts/set-customer-email
 ## Developer Hints
 
 When working with IntelliJ IDEA you need to enable Annotation Processing in the Preferences.
+It is also recommended to install the Lombok plugin.
 
 ## Deployment
 
