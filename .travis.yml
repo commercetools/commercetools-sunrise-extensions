@@ -1,9 +1,10 @@
 language: java
 jdk:
  - oraclejdk8
-script: >
+before_script:
   ./ngrok start sunrise -config=ngrok.yaml
-  & ./gradlew -Dspring.profiles.active=ci test
+script: >
+  ./gradlew -Dspring.profiles.active=ci test
 notifications:
   email:
     on_success: change
