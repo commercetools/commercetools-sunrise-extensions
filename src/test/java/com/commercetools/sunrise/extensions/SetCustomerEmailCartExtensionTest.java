@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class SetCustomerEmailExtensionsControllerTest extends ControllerTest {
+public class SetCustomerEmailCartExtensionTest extends ExtensionTest {
 
     @MockBean
     private BlockingSphereClient ctp;

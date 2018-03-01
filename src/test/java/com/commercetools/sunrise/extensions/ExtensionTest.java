@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(SetCustomerEmailCartExtension.class)
 @ActiveProfiles({"test"})
 @ContextConfiguration(classes = DefaultWiring.class)
-public abstract class ControllerTest {
+public abstract class ExtensionTest {
 
     @Autowired
     private MockMvc mockMvc;
