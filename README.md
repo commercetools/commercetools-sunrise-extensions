@@ -1,4 +1,4 @@
-## Sunrise Extensions
+# Sunrise Extensions
 
 [![Build Status](https://travis-ci.org/commercetools/commercetools-sunrise-extensions.svg?branch=master)](https://travis-ci.org/commercetools/commercetools-sunrise-extensions)
 
@@ -37,12 +37,24 @@ Environment Variables to set:
 
 ```
 SPRING_PROFILES_ACTIVE=production
-AUTHENTICATION_KEY=your-authentication-key if azure security is used
-CTP_PROJECT_KEY=
-CTP_CLIENT_ID=
-CTP_CLIENT_SECRET=
-CTP_AUTH_URL=
-CTP_API_URL=
+AUTHENTICATION_KEY=YOUR-FUNCTION-AUTHENTICATION-KEY
+CTP_PROJECT_KEY=YOUR-COMMERCETOOLS-PROJECT_KEY
+CTP_CLIENT_ID=YOUR-COMMERCETOOLS-CLIENT-ID
+CTP_CLIENT_SECRET=YOUR-COMMERCETOOLS-CLIENT-SECRET
+CTP_AUTH_URL=https://auth.commercetools.com
+CTP_API_URL=https://api.commercetools.com
 ```
 
 ### Heroku
+
+Apart from the code upload, the app deployed to heroku only needs environment variables set:
+
+```
+heroku config:set SPRING_PROFILES_ACTIVE=production
+heroku config:set CTP_PROJECT_KEY=YOUR-COMMERCETOOLS-PROJECT_KEY
+heroku config:set CTP_CLIENT_ID=YOUR-COMMERCETOOLS-CLIENT-ID
+heroku config:set CTP_CLIENT_SECRET=YOUR-COMMERCETOOLS-CLIENT-SECRET
+heroku config:set CTP_AUTH_URL=https://auth.commercetools.com
+heroku config:set CTP_API_URL=https://api.commercetools.com
+heroku config:set AUTHENTICATION_KEY=YOUR-FUNCTION-AUTHENTICATION-KEY
+```
