@@ -20,7 +20,7 @@ When working with IntelliJ IDEA you need to enable Annotation Processing in the 
 
 ### AWS Lambda
 
-To upload the code ("Function package") to Lambda create a "fat" jar containing all code with library dependencies
+To upload the code ("Function package") to Lambda create a "fat" jar containing all code including library dependencies
 
 ```
 ./gradlew shadowJar to create fat jar
@@ -28,7 +28,7 @@ To upload the code ("Function package") to Lambda create a "fat" jar containing 
 
 You can find the artifact at `build/libs/sunrise-extensions-0.0.1-SNAPSHOT-all.jar `.
 
-Setting for AWS Lambda:
+Settings for AWS Lambda:
 
 * Runtime: Java 8
 * Handler: com.commercetools.sunrise.extensions.lambda.CartSetCustomerEmailRequestHandler::handleRequest`
