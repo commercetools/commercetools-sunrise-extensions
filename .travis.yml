@@ -3,7 +3,7 @@ jdk: oraclejdk8
 before_script:
  - wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
  - unzip ngrok-stable-linux-amd64.zip
- - ./ngrok start sunrise --config=ngrok.yaml
+ - ./ngrok start sunrise --config=ngrok.yaml -log=stdout > /dev/null &
 script: ./gradlew -Dspring.profiles.active=ci clean test
 notifications:
   email:
