@@ -33,7 +33,7 @@ import java.util.function.Function;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ContextConfiguration(classes = {DefaultWiring.class, RestTemplate.class})
-@ActiveProfiles({"ci", "integration"})
+@ActiveProfiles({"ci", "it"})
 public abstract class ExtensionIntegrationTest {
 
     private static final String NGROK_API = "http://127.0.0.1:4040/api/tunnels/sunrise";

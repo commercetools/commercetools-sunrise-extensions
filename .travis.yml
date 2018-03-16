@@ -1,7 +1,10 @@
 language: java
-jdk:
- - oraclejdk8
-script: ./gradlew -Dspring.profiles.active=ci test
+jdk: oraclejdk8
+before_script:
+ - wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+ - unzip ngrok-stable-linux-amd64.zip
+ - ./ngrok start sunrise
+script: ./gradlew -Dspring.profiles.active=ci clean test
 notifications:
   email:
     on_success: change

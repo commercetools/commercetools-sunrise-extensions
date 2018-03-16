@@ -26,4 +26,4 @@ nbdist/
 .nb-gradle/
 
 application-default.properties
-application-integration.properties
+application-it.properties

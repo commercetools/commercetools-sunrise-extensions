@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(SetCustomerEmailCartExtension.class)
-@ActiveProfiles({"test"})
+@ActiveProfiles("test")
 @ContextConfiguration(classes = DefaultWiring.class)
 public abstract class ExtensionTest {
 
