@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static com.commercetools.sunrise.extensions.boot.ExtensionsController.ENDPOINT;
+import static com.commercetools.sunrise.extensions.boot.ExtensionsController.SET_CUSTOMER_EMAIL_ENDPOINT;
 import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
@@ -20,7 +20,7 @@ public class SetCustomerEmailCartExtensionIntegrationTest extends ExtensionInteg
 
     @Test
     public void onCreateCartWithoutCustomerDoesNothing() {
-        withExtension(extensionDraft(ENDPOINT, TRIGGERS), extension -> {
+        withExtension(extensionDraft(SET_CUSTOMER_EMAIL_ENDPOINT, TRIGGERS), extension -> {
             final CartDraft cartDraft = cartDraft();
             assertThat(cartDraft.getCustomerId()).isNullOrEmpty();
             assertThat(cartDraft.getCustomerEmail()).isNullOrEmpty();
@@ -34,7 +34,7 @@ public class SetCustomerEmailCartExtensionIntegrationTest extends ExtensionInteg
 
     @Test
     public void onCreateCartWithEmailDoesNothing() {
-        withExtension(extensionDraft(ENDPOINT, TRIGGERS), extension -> {
+        withExtension(extensionDraft(SET_CUSTOMER_EMAIL_ENDPOINT, TRIGGERS), extension -> {
             withCustomer(customerDraft(), customer -> {
                 final CartDraft cartDraft = CartDraftBuilder.of(cartDraft())
                         .customerId(customer.getId())
@@ -52,7 +52,7 @@ public class SetCustomerEmailCartExtensionIntegrationTest extends ExtensionInteg
 
     @Test
     public void onCreateCartWithoutEmailSetsIt() {
-        withExtension(extensionDraft(ENDPOINT, TRIGGERS), extension -> {
+        withExtension(extensionDraft(SET_CUSTOMER_EMAIL_ENDPOINT, TRIGGERS), extension -> {
             withCustomer(customerDraft(), customer -> {
                 final CartDraft cartDraft = CartDraftBuilder.of(cartDraft())
                         .customerId(customer.getId())
@@ -66,10 +66,6 @@ public class SetCustomerEmailCartExtensionIntegrationTest extends ExtensionInteg
             });
             return extension;
         });
-    }
-
-    private static List<Trigger> triggers() {
-        return TRIGGERS;
     }
 }
 

@@ -18,12 +18,12 @@ import java.util.concurrent.CompletionStage;
 @Controller
 public class ExtensionsController {
 
-    public static final String ENDPOINT = "/carts/set-customer-email";
+    public static final String SET_CUSTOMER_EMAIL_ENDPOINT = "/carts/set-customer-email";
 
     @Autowired
     private SetCustomerEmailCartExtension setCustomerEmailCartExtension;
 
-    @PostMapping(value = ENDPOINT,
+    @PostMapping(value = SET_CUSTOMER_EMAIL_ENDPOINT,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody

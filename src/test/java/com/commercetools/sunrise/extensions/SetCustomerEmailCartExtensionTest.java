@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import static com.commercetools.sunrise.extensions.boot.ExtensionsController.ENDPOINT;
+import static com.commercetools.sunrise.extensions.boot.ExtensionsController.SET_CUSTOMER_EMAIL_ENDPOINT;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Matchers.any;
@@ -29,21 +29,21 @@ public class SetCustomerEmailCartExtensionTest extends ExtensionTest {
 
     @Test
     public void onCartWithEmailDoesNothing() throws Exception {
-        testUrlWithInput(ENDPOINT, "input-cart-with-email.json")
+        testUrlWithInput(SET_CUSTOMER_EMAIL_ENDPOINT, "input-cart-with-email.json")
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.actions", hasSize(0)));
     }
 
     @Test
     public void onCartWithoutCustomerDoesNothing() throws Exception {
-        testUrlWithInput(ENDPOINT, "input-cart-without-customer.json")
+        testUrlWithInput(SET_CUSTOMER_EMAIL_ENDPOINT, "input-cart-without-customer.json")
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.actions", hasSize(0)));
     }
 
     @Test
     public void onCartWithoutEmailSetsCustomerEmail() throws Exception {
-        testUrlWithInput(ENDPOINT, "input-cart-without-email.json")
+        testUrlWithInput(SET_CUSTOMER_EMAIL_ENDPOINT, "input-cart-without-email.json")
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.actions", hasSize(1)))
                 .andExpect(jsonPath("$.actions[0].action", equalTo("setCustomerEmail")))

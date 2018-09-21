@@ -16,7 +16,7 @@ import java.util.Collections;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.TimeUnit;
 
-public class CtpExtensionAwsLambdaRequestHandler<T extends Resource<T>> implements RequestHandler<AwsProxyRequest, AwsProxyResponse> {
+public abstract class CtpExtensionAwsLambdaRequestHandler<T extends Resource<T>> implements RequestHandler<AwsProxyRequest, AwsProxyResponse> {
     private final Extension<T> extension;
     private final TypeReference<ExtensionRequest<T>> typeReference;
 

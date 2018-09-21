@@ -6,6 +6,7 @@ import io.sphere.sdk.carts.commands.updateactions.SetCustomerEmail;
 import io.sphere.sdk.client.SphereClient;
 import io.sphere.sdk.customers.queries.CustomerByIdGet;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.concurrent.CompletionStage;
@@ -13,6 +14,7 @@ import java.util.concurrent.CompletionStage;
 import static java.util.concurrent.CompletableFuture.completedFuture;
 
 @Slf4j
+@Component
 public class SetCustomerEmailCartExtension implements Extension<Cart> {
 
     private final SphereClient sphereClient;
