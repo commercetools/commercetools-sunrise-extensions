@@ -6,6 +6,7 @@ import io.sphere.sdk.carts.CartDraftBuilder;
 import io.sphere.sdk.extensions.Trigger;
 import io.sphere.sdk.extensions.TriggerBuilder;
 import io.sphere.sdk.extensions.TriggerType;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -17,6 +18,11 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 public class SetCustomerEmailCartExtensionIntegrationTest extends ExtensionIntegrationTest {
 
     private static final List<Trigger> TRIGGERS = singletonList(TriggerBuilder.of(Cart.referenceTypeId(), singletonList(TriggerType.CREATE)).build());
+
+    @Before
+    public void setUp() {
+        removeAllRegisteredExtensions();
+    }
 
     @Test
     public void onCreateCartWithoutCustomerDoesNothing() {

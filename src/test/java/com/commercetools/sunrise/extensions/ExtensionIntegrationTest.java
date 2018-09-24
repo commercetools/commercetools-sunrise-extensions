@@ -7,6 +7,7 @@ import io.sphere.sdk.carts.CartDraftBuilder;
 import io.sphere.sdk.carts.commands.CartCreateCommand;
 import io.sphere.sdk.carts.commands.CartDeleteCommand;
 import io.sphere.sdk.client.BlockingSphereClient;
+import io.sphere.sdk.client.SphereClientUtils;
 import io.sphere.sdk.customers.Customer;
 import io.sphere.sdk.customers.CustomerDraft;
 import io.sphere.sdk.customers.CustomerDraftBuilder;
@@ -15,6 +16,8 @@ import io.sphere.sdk.customers.commands.CustomerDeleteCommand;
 import io.sphere.sdk.extensions.*;
 import io.sphere.sdk.extensions.commands.ExtensionCreateCommand;
 import io.sphere.sdk.extensions.commands.ExtensionDeleteCommand;
+import io.sphere.sdk.extensions.queries.ExtensionQuery;
+import io.sphere.sdk.queries.QueryExecutionUtils;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,8 +29,10 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.money.CurrencyUnit;
 import javax.money.Monetary;
+import java.time.Duration;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.CompletionStage;
 import java.util.function.Function;
 
 @RunWith(SpringRunner.class)
@@ -81,6 +86,12 @@ public abstract class ExtensionIntegrationTest {
 
     protected CartDraft cartDraft() {
         return CartDraftBuilder.of(CURRENCY).build();
+    }
+
+    protected void removeAllRegisteredExtensions() {
+        final CompletionStage<List<Extension>> extensionsStage = QueryExecutionUtils.queryAll(ctp, ExtensionQuery.of());
+        final List<Extension> extensions = SphereClientUtils.blockingWait(extensionsStage, Duration.ofSeconds(30));
+        extensions.forEach(extension -> ctp.executeBlocking(ExtensionDeleteCommand.of(extension)));
     }
 
     private String randomKey() {
